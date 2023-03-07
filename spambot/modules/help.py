@@ -1,6 +1,4 @@
 import asyncio
-# from hackingaibot import gladiator, StartTime, OWNER_ID, OWNER_NAME, REPO_NAME, SUDO_USERS, DEV_USERS
-
 from spambot import gladiator, StartTime
 from spambot import (
     DEV_USERS,
@@ -8,7 +6,6 @@ from spambot import (
     OWNER_ID,
     OWNER_NAME
 )
-
 from telethon import events, custom, Button
 from datetime import datetime
 import time

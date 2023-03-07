@@ -50,8 +50,7 @@ def get_readable_time(seconds: int) -> str:
     return pingtime
 
 
-# path = "spambot/modules/*.py"
-path = "spambot/modules/help.py"
+path = "spambot/modules/*.py"
 files = glob.glob(path)
 for name in files:
     with open(name) as a:

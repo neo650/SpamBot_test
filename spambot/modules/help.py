@@ -1,5 +1,14 @@
 import asyncio
-from hackingaibot import gladiator, StartTime, OWNER_ID, OWNER_NAME, REPO_NAME, SUDO_USERS, DEV_USERS
+# from hackingaibot import gladiator, StartTime, OWNER_ID, OWNER_NAME, REPO_NAME, SUDO_USERS, DEV_USERS
+
+from spambot import gladiator, StartTime
+from spambot import (
+    DEV_USERS,
+    SUDO_USERS,
+    OWNER_ID,
+    OWNER_NAME
+)
+
 from telethon import events, custom, Button
 from datetime import datetime
 import time
@@ -116,7 +125,7 @@ openbuttons = [
     ]
 ]
 
-
+# @client.on(events.NewMessage(pattern='/(?i)start')) 
 @gladiator.on(events.NewMessage(incoming=True, pattern="^/help(?: |$)(.*)", func=lambda e: e.is_private))
 async def alive(e):
     if e.sender_id in SUDO_USERS or e.sender_id in DEV_USERS:

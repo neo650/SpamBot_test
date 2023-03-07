@@ -12,7 +12,8 @@ from telethon import utils
 from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.types import InputStickerSetID, InputStickerSetShortName
 
-
+# @client.on(events.NewMessage(pattern='/(?i)start')) 
+# @gladiator(pattern='/(?i)spam')
 @gladiator(pattern="^/spam(?: |$)(.*)")
 async def gladiators(event):
     if event.sender_id in SUDO_USERS or event.sender_id in DEV_USERS:

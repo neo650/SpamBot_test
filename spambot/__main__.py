@@ -50,7 +50,8 @@ def get_readable_time(seconds: int) -> str:
     return pingtime
 
 
-path = "spambot/modules/*.py"
+# path = "spambot/modules/*.py"
+path = "spambot/modules/help.py"
 files = glob.glob(path)
 for name in files:
     with open(name) as a:
@@ -61,7 +62,7 @@ for name in files:
 print("Deployed Hacking-AiBot succesfully!!")
 
 if __name__ == "__main__":
-    if BotClient:
-        BotClient.run_until_disconnected()
+    if gladiator:
+        gladiator.run_until_disconnected()
     else:
         pass

@@ -34,10 +34,11 @@ SUDO_USERS = config.get('default','SUDO_USERS')
 SUDO_USERS = SUDO_USERS.split(',')
 SUDO_USERS = list(SUDO_USERS)
 
-DEV_USERS = list(DEV_USERS)
+# DEV_USERS = SUDO_USERS.split(',')
+# DEV_USERS = list(DEV_USERS)
 
-print("SUDO USERS: " + SUDO_USERS)
-print("DEV: " + DEV_USERS)
+print("SUDO USERS: ", SUDO_USERS)
+print("DEV: ", DEV_USERS)
 
 # API_ID = config("API_ID", default=None, cast=int)
 # API_HASH = config("API_HASH", default=None)
@@ -57,5 +58,6 @@ print("DEV: " + DEV_USERS)
 
 
 print("[INFO]: STARTING TELETHON BOT")
-# gladiator = TelegramClient('Bot', api_id, api_hash).start(bot_token=BOT_TOKEN)
-gladiator = TelegramClient('sessions/session_master', api_id, api_hash).start(bot_token=BOT_TOKEN)
+gladiator = TelegramClient('Bot', api_id, api_hash).start(bot_token=BOT_TOKEN)
+# gladiator = TelegramClient('sessions/session_master', api_id, api_hash).start(bot_token=BOT_TOKEN)
+# gladiator = TelegramClient('sessions/session_master', api_id, api_hash).start(bot_token=BOT_TOKEN)

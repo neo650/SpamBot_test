@@ -128,7 +128,7 @@ openbuttons = [
 # @client.on(events.NewMessage(pattern='/(?i)start')) 
 @gladiator.on(events.NewMessage(incoming=True, pattern="^/help(?: |$)(.*)", func=lambda e: e.is_private))
 async def alive(e):
-    if e.sender_id in SUDO_USERS or e.sender_id in DEV_USERS:
+    if str(e.sender_id) in SUDO_USERS or str(e.sender_id) in DEV_USERS:
         try:
             await e.reply(help_caption, buttons=helpbuttons)
         except:
@@ -147,7 +147,12 @@ async def alive(e):
 async def chat(event):
     if event.data == b"spamcmds":
         chcksudo = int(event.chat_id)
+        # ownerid = int(OWNER_ID)
+        # print("CHECK ID ", chcksudo)
+        # print("OWNER ID ", OWNER_ID)
         if chcksudo not in SUDO_USERS:
+        # if chcksudo != ownerid:
+            print("chcksudo != OWNER_ID")
             return
         await event.edit(
             spam_caption,

@@ -32,7 +32,10 @@ DEV_USERS = config.get('default','DEV_USERS')
 SUDO_USERS = config.get('default','SUDO_USERS') 
 
 SUDO_USERS = SUDO_USERS.split(',')
-SUDO_USERS = list(SUDO_USERS)
+# SUDO_USERS = list(SUDO_USERS)
+SUDO_USERS = list(map(int, SUDO_USERS))
+
+# list(map(int, "42 0".split()))
 
 # DEV_USERS = SUDO_USERS.split(',')
 # DEV_USERS = list(DEV_USERS)

@@ -6,7 +6,7 @@ import logging
 import importlib
 from spambot import gladiator, OWNER_ID
 
-#logging
+# logging
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO,
@@ -32,7 +32,8 @@ def get_readable_time(seconds: int) -> str:
 
     while count < 4:
         count += 1
-        remainder, result = divmod(seconds, 60) if count < 3 else divmod(seconds, 24)
+        remainder, result = divmod(
+            seconds, 60) if count < 3 else divmod(seconds, 24)
         if seconds == 0 and remainder == 0:
             break
         timearray.append(int(result))
@@ -47,8 +48,6 @@ def get_readable_time(seconds: int) -> str:
     pingtime += ":".join(timearray)
 
     return pingtime
-
-
 
 
 path = "spambot/modules/*.py"

@@ -23,6 +23,7 @@ def get_uptime(milliseconds: int) -> str:
     else:
         return uptime_ret
 
+
 DEFAULTUSER = str(OWNER_NAME)
 help_img = "https://telegra.ph/file/6e92103071aa47ee7023e.mp4"
 
@@ -104,15 +105,17 @@ startbuttons = [
         Button.url("Support", url=f"https://t.me/ProjectsChat"),
     ],
     [
-        Button.url("Github Organisation", url="https://github.com/Gladiators-Projects")
+        Button.url("Github Organisation",
+                   url="https://github.com/Gladiators-Projects")
     ]
 ]
-  
+
 openbuttons = [
     [
         Button.inline("Oᴘᴇɴ Aɢᴀɪɴ", data="open")
     ]
 ]
+
 
 @gladiator.on(events.NewMessage(incoming=True, pattern="^/help(?: |$)(.*)", func=lambda e: e.is_private))
 async def alive(e):
@@ -121,7 +124,7 @@ async def alive(e):
             await e.reply(help_caption, buttons=helpbuttons)
         except:
             await e.client.send_message(e.chat_id, help_caption, buttons=helpbuttons)
-            
+
 
 @gladiator.on(events.NewMessage(incoming=True, pattern="^/start(?: |$)(.*)"))
 async def alive(e):
@@ -129,6 +132,7 @@ async def alive(e):
         await e.reply(start_caption, buttons=startbuttons)
     except:
         await e.client.send_message(e.chat_id, start_caption, buttons=startbuttons)
+
 
 @gladiator.on(events.CallbackQuery())
 async def chat(event):

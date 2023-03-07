@@ -1,5 +1,11 @@
 import asyncio
-from hackingaibot import gladiator, StartTime, OWNER_ID, OWNER_NAME, REPO_NAME, SUDO_USERS, DEV_USERS
+from spambot import gladiator, StartTime
+from spambot import (
+    DEV_USERS,
+    SUDO_USERS,
+    OWNER_ID,
+    OWNER_NAME
+)
 from telethon import events, custom, Button
 from datetime import datetime
 import time
@@ -22,6 +28,7 @@ def get_uptime(milliseconds: int) -> str:
         return uptime_ret[:-1]
     else:
         return uptime_ret
+
 
 DEFAULTUSER = str(OWNER_NAME)
 help_img = "https://telegra.ph/file/6e92103071aa47ee7023e.mp4"
@@ -104,24 +111,26 @@ startbuttons = [
         Button.url("Support", url=f"https://t.me/ProjectsChat"),
     ],
     [
-        Button.url("Github Organisation", url="https://github.com/Gladiators-Projects")
+        Button.url("Github Organisation",
+                   url="https://github.com/Gladiators-Projects")
     ]
 ]
-  
+
 openbuttons = [
     [
         Button.inline("Oᴘᴇɴ Aɢᴀɪɴ", data="open")
     ]
 ]
 
+# @client.on(events.NewMessage(pattern='/(?i)start')) 
 @gladiator.on(events.NewMessage(incoming=True, pattern="^/help(?: |$)(.*)", func=lambda e: e.is_private))
 async def alive(e):
-    if e.sender_id in SUDO_USERS or e.sender_id in DEV_USERS:
+    if str(e.sender_id) in SUDO_USERS or str(e.sender_id) in DEV_USERS:
         try:
             await e.reply(help_caption, buttons=helpbuttons)
         except:
             await e.client.send_message(e.chat_id, help_caption, buttons=helpbuttons)
-            
+
 
 @gladiator.on(events.NewMessage(incoming=True, pattern="^/start(?: |$)(.*)"))
 async def alive(e):
@@ -130,11 +139,17 @@ async def alive(e):
     except:
         await e.client.send_message(e.chat_id, start_caption, buttons=startbuttons)
 
+
 @gladiator.on(events.CallbackQuery())
 async def chat(event):
     if event.data == b"spamcmds":
         chcksudo = int(event.chat_id)
+        # ownerid = int(OWNER_ID)
+        # print("CHECK ID ", chcksudo)
+        # print("OWNER ID ", OWNER_ID)
         if chcksudo not in SUDO_USERS:
+        # if chcksudo != ownerid:
+            print("chcksudo != OWNER_ID")
             return
         await event.edit(
             spam_caption,
